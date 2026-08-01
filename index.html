@@ -3,77 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Shahouda Challenge</title>
 
 <style>
 *{
-  box-sizing:border-box;
+ box-sizing:border-box;
 }
 
 body{
-  margin:0;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:Arial, sans-serif;
-  background:linear-gradient(135deg,#ffd6e7,#e8d7ff);
+ margin:0;
+ min-height:100vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ font-family:Arial,sans-serif;
+ background:linear-gradient(135deg,#ffd6e7,#e8d7ff);
 }
 
 .box{
-  background:white;
-  width:90%;
-  max-width:420px;
-  padding:30px;
-  border-radius:25px;
-  text-align:center;
-  box-shadow:0 10px 30px #0002;
+ background:white;
+ width:90%;
+ max-width:420px;
+ padding:30px;
+ border-radius:25px;
+ text-align:center;
+ box-shadow:0 10px 30px #0002;
 }
 
-h1{
-  color:#b83280;
-  font-size:40px;
-}
-
-h2{
-  color:#b83280;
+h1,h2{
+ color:#b83280;
 }
 
 p{
-  font-size:22px;
-  color:#444;
+ font-size:22px;
+ color:#444;
 }
 
 button{
-  width:90%;
-  padding:15px;
-  margin:10px;
-  border:none;
-  border-radius:20px;
-  font-size:18px;
-  background:#b83280;
-  color:white;
-  cursor:pointer;
-  transition:.3s;
+ width:90%;
+ padding:15px;
+ margin:10px;
+ border:0;
+ border-radius:20px;
+ background:#b83280;
+ color:white;
+ font-size:18px;
+ cursor:pointer;
+ transition:.3s;
 }
 
 button:hover{
-  transform:scale(1.05);
+ transform:scale(1.05);
 }
 
 .screen{
-  display:none;
+ display:none;
 }
 
 .active{
-  display:block;
+ display:block;
 }
 
 .run{
-  position:relative;
+ position:relative;
 }
-
 </style>
 
 </head>
@@ -82,27 +75,22 @@ button:hover{
 
 <div class="box">
 
-
 <!-- الشاشة 1 -->
 <div id="s1" class="screen active">
-
 <h1>شهوددددةةة</h1>
 
 <button onclick="next(2)">
-هلا بأفضل ابن عم بالعالم
+هلا أفضل ابن عم بالعالم
 </button>
 
 <button onclick="next(2)">
 Hej bästa kusin i världen
 </button>
-
 </div>
-
 
 
 <!-- الشاشة 2 -->
 <div id="s2" class="screen">
-
 <h2>السؤال الثاني</h2>
 
 <p>مين أحسن ابن عم بالعالم؟</p>
@@ -111,20 +99,108 @@ Hej bästa kusin i världen
 محمد
 </button>
 
-<button id="mustafa" class="run" onmouseover="escapeBtn('mustafa')">
+<button id="mustafa" class="run" onmouseover="move('mustafa')">
 مصطفى
+</button>
+</div>
+
+
+<!-- الشاشة 3 -->
+<div id="s3" class="screen">
+<h2>السؤال الثالث</h2>
+
+<p>مين أفضل نادي بالعالم؟</p>
+
+<button onclick="next(4)">
+ريال مدريد
+</button>
+
+<button id="barca" class="run" onmouseover="move('barca')">
+برشلونة
+</button>
+</div>
+
+
+<!-- الشاشة 4 -->
+<div id="s4" class="screen">
+<h2>عجلة الحظ</h2>
+
+<p>أنتِ وحظك مين الأفضل؟</p>
+
+<div style="font-size:25px;line-height:2">
+⚪ ريال مدريد<br>
+🔵🔴 فيسكا بارسا<br>
+🏆 رونالدو<br>
+⚽ ميسي<br>
+🤍 ريال مدريد
+</div>
+
+<button onclick="next(5)">
+لف العجلة
+</button>
+
+</div>
+<!-- الشاشة 5 -->
+<div id="s5" class="screen">
+
+<h2>السؤال الخامس</h2>
+
+<p>مين عمك؟</p>
+
+<button onclick="next(6)">
+رونالدو
+</button>
+
+<button id="messi" class="run" onmouseover="move('messi')">
+ميسي
 </button>
 
 </div>
 
+
+<!-- الشاشة 6 -->
+<div id="s6" class="screen">
+
+<h2>السؤال الأخير</h2>
+
+<p>مين 🐐؟</p>
+
+<button onclick="next(7)">
+رونالدو
+</button>
+
+<button onclick="next(7)">
+ميسي
+</button>
+
+</div>
+
+
+<!-- الشاشة الأخيرة -->
+<div id="s7" class="screen">
+
+<h1>شهودة</h1>
+
+<p>
+احكي: رونالدو عم ميسي
+</p>
+
+<p>
+وبعتيلّي ڤويس إنستا مشان ما يروح تعبي عالفاضي
+</p>
+
+</div>
+
+
+</div>
 
 
 <script>
 
 function next(num){
 
-document.querySelectorAll(".screen").forEach(function(x){
-x.classList.remove("active");
+document.querySelectorAll(".screen").forEach(function(screen){
+screen.classList.remove("active");
 });
 
 document.getElementById("s"+num).classList.add("active");
@@ -132,19 +208,19 @@ document.getElementById("s"+num).classList.add("active");
 }
 
 
-function escapeBtn(id){
+function move(id){
 
 let btn=document.getElementById(id);
 
-btn.style.left=(Math.random()*200-100)+"px";
-btn.style.top=(Math.random()*100-50)+"px";
+btn.style.position="relative";
+
+btn.style.left=(Math.random()*250-125)+"px";
+btn.style.top=(Math.random()*120-60)+"px";
 
 }
 
 </script>
 
-
-</div>
 
 </body>
 </html>
