@@ -7,48 +7,73 @@
 <title>Shahouda Challenge</title>
 
 <style>
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ffd6e7, #e8d7ff);
+*{
+  box-sizing:border-box;
 }
 
-.box {
-  background: white;
-  width: 85%;
-  max-width: 400px;
-  padding: 30px;
-  border-radius: 25px;
-  text-align: center;
-  box-shadow: 0 10px 30px #0002;
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#ffd6e7,#e8d7ff);
 }
 
-h1 {
-  font-size: 45px;
-  color: #b83280;
-  margin-bottom: 30px;
+.box{
+  background:white;
+  width:90%;
+  max-width:420px;
+  padding:30px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 10px 30px #0002;
 }
 
-button {
-  width: 90%;
-  padding: 15px;
-  margin: 10px;
-  border: none;
-  border-radius: 20px;
-  font-size: 18px;
-  background: #b83280;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+h1{
+  color:#b83280;
+  font-size:40px;
 }
 
-button:hover {
-  transform: scale(1.05);
+h2{
+  color:#b83280;
 }
+
+p{
+  font-size:22px;
+  color:#444;
+}
+
+button{
+  width:90%;
+  padding:15px;
+  margin:10px;
+  border:none;
+  border-radius:20px;
+  font-size:18px;
+  background:#b83280;
+  color:white;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+.screen{
+  display:none;
+}
+
+.active{
+  display:block;
+}
+
+.run{
+  position:relative;
+}
+
 </style>
 
 </head>
@@ -56,19 +81,70 @@ button:hover {
 <body>
 
 <div class="box">
-  <h1>شهوددددةةة</h1>
 
-  <button onclick="next()">هلا بأفضل ابن عم بالعالم</button>
 
-  <button onclick="next()">Hej bästa kusin i världen</button>
+<!-- الشاشة 1 -->
+<div id="s1" class="screen active">
+
+<h1>شهوددددةةة</h1>
+
+<button onclick="next(2)">
+هلا بأفضل ابن عم بالعالم
+</button>
+
+<button onclick="next(2)">
+Hej bästa kusin i världen
+</button>
+
 </div>
 
 
+
+<!-- الشاشة 2 -->
+<div id="s2" class="screen">
+
+<h2>السؤال الثاني</h2>
+
+<p>مين أحسن ابن عم بالعالم؟</p>
+
+<button onclick="next(3)">
+محمد
+</button>
+
+<button id="mustafa" class="run" onmouseover="escapeBtn('mustafa')">
+مصطفى
+</button>
+
+</div>
+
+
+
 <script>
-function next(){
-  alert("بدأ التحدي");
+
+function next(num){
+
+document.querySelectorAll(".screen").forEach(function(x){
+x.classList.remove("active");
+});
+
+document.getElementById("s"+num).classList.add("active");
+
 }
+
+
+function escapeBtn(id){
+
+let btn=document.getElementById(id);
+
+btn.style.left=(Math.random()*200-100)+"px";
+btn.style.top=(Math.random()*100-50)+"px";
+
+}
+
 </script>
+
+
+</div>
 
 </body>
 </html>
