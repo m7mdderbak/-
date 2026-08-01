@@ -16,20 +16,20 @@ body{
 margin:0;
 min-height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#ffd6e7,#e8d7ff);
+background:linear-gradient(135deg,#ffd6e7,#e8d7ff,#ffe9f3);
 }
 
 .box{
-background:white;
 width:90%;
 max-width:420px;
+background:white;
 padding:30px;
-border-radius:25px;
+border-radius:30px;
 text-align:center;
-box-shadow:0 10px 30px #0002;
+box-shadow:0 15px 35px #0003;
 }
 
 h1,h2{
@@ -37,8 +37,31 @@ color:#b83280;
 }
 
 p{
-font-size:22px;
+font-size:21px;
 color:#444;
+line-height:1.6;
+}
+
+.screen{
+display:none;
+opacity:0;
+}
+
+.active{
+display:block;
+animation:show .5s ease forwards;
+}
+
+@keyframes show{
+from{
+opacity:0;
+transform:translateY(25px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 button{
@@ -46,29 +69,29 @@ width:90%;
 padding:15px;
 margin:10px;
 border:0;
-border-radius:20px;
-background:#b83280;
-color:white;
+border-radius:25px;
 font-size:18px;
+color:white;
+background:linear-gradient(135deg,#b83280,#8e44ad);
 cursor:pointer;
+box-shadow:0 8px 15px #0003;
 transition:.3s;
 }
 
-button:hover{
-transform:scale(1.05);
-}
-
-.screen{
-display:none;
-}
-
-.active{
-display:block;
+button:active{
+transform:scale(.95);
 }
 
 .run{
 position:relative;
 }
+
+.progress{
+font-size:15px;
+color:#888;
+margin-bottom:15px;
+}
+
 
 #wheel{
 width:220px;
@@ -78,14 +101,15 @@ margin:20px auto;
 display:flex;
 align-items:center;
 justify-content:center;
+text-align:center;
 background:conic-gradient(
-#ffffff,
+#fff,
 #ffd6e7,
 #e8d7ff,
-#ffffff
+#fff
 );
 border:8px solid #b83280;
-font-size:25px;
+font-size:24px;
 font-weight:bold;
 transition:4s;
 }
@@ -98,7 +122,8 @@ transition:4s;
 
 <div class="box">
 
-<!-- الشاشة 1 -->
+<!-- الشاشة الأولى -->
+
 <div id="s1" class="screen active">
 
 <h1>شهوددددةةة</h1>
@@ -115,33 +140,35 @@ Hej bästa kusin i världen
 
 
 <!-- السؤال الأول -->
+
 <div id="s2" class="screen">
 
-<h2>السؤال الأول</h2>
+<div class="progress">السؤال 1 من 5</div>
 
-<p>مين أحسن ابن عم بالعالم؟</p>
+<h2>مين أحسن ابن عم بالعالم؟</h2>
 
 <button onclick="next(3)">
 محمد
 </button>
 
-<button id="mustafa" class="run" onmouseover="move('mustafa')">
+<button id="mustafa" class="run">
 مصطفى
 </button>
 
 </div>
 <!-- السؤال الثاني -->
+
 <div id="s3" class="screen">
 
-<h2>السؤال الثاني</h2>
+<div class="progress">السؤال 2 من 5</div>
 
-<p>مين أفضل نادي بالعالم؟</p>
+<h2>مين أفضل نادي بالعالم؟</h2>
 
 <button onclick="next(4)">
 ريال مدريد
 </button>
 
-<button id="barca" class="run" onmouseover="move('barca')">
+<button id="barca" class="run">
 برشلونة
 </button>
 
@@ -149,14 +176,15 @@ Hej bästa kusin i världen
 
 
 <!-- السؤال الثالث -->
+
 <div id="s4" class="screen">
 
-<h2>السؤال الثالث</h2>
+<div class="progress">السؤال 3 من 5</div>
 
-<p>أنتِ وحظك مين الأفضل؟</p>
+<h2>أنتِ وحظك مين الأفضل؟</h2>
 
 <div id="wheel">
-ريال مدريد
+لف العجلة
 </div>
 
 <button onclick="spinWheel()">
@@ -173,17 +201,18 @@ Hej bästa kusin i världen
 
 
 <!-- السؤال الرابع -->
+
 <div id="s5" class="screen">
 
-<h2>السؤال الرابع</h2>
+<div class="progress">السؤال 4 من 5</div>
 
-<p>مين عمك؟</p>
+<h2>مين عمك؟</h2>
 
 <button onclick="next(6)">
 رونالدو
 </button>
 
-<button id="messi" class="run" onmouseover="move('messi')">
+<button id="messi" class="run">
 ميسي
 </button>
 
@@ -191,11 +220,12 @@ Hej bästa kusin i världen
 
 
 <!-- السؤال الخامس -->
+
 <div id="s6" class="screen">
 
-<h2>السؤال الخامس</h2>
+<div class="progress">السؤال 5 من 5</div>
 
-<p>مين 🐐؟</p>
+<h2>مين 🐐؟</h2>
 
 <button onclick="next(7)">
 رونالدو
@@ -207,6 +237,7 @@ Hej bästa kusin i världen
 
 </div>
 <!-- النهاية -->
+
 <div id="s7" class="screen">
 
 <h1>شهوددددةةة</h1>
@@ -244,18 +275,43 @@ document.getElementById("s"+num).classList.add("active");
 }
 
 
-function move(id){
+// حركة الأزرار الهاربة
+
+function escapeButton(id){
 
 let btn=document.getElementById(id);
 
 btn.style.position="relative";
 
-btn.style.left=(Math.random()*250-125)+"px";
+btn.style.left=(Math.random()*220-110)+"px";
 
-btn.style.top=(Math.random()*120-60)+"px";
+btn.style.top=(Math.random()*100-50)+"px";
 
 }
 
+
+// تفعيل الهروب باللمس والاقتراب
+
+["mustafa","barca","messi"].forEach(function(id){
+
+let btn=document.getElementById(id);
+
+btn.addEventListener("mouseover",function(){
+
+escapeButton(id);
+
+});
+
+btn.addEventListener("touchstart",function(){
+
+escapeButton(id);
+
+});
+
+});
+
+
+// العجلة
 
 function spinWheel(){
 
