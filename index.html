@@ -3,89 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Shahouda Challenge</title>
 
 <style>
+
 *{
- box-sizing:border-box;
+box-sizing:border-box;
 }
 
 body{
- margin:0;
- min-height:100vh;
- display:flex;
- justify-content:center;
- align-items:center;
- font-family:Arial,sans-serif;
- background:linear-gradient(135deg,#ffd6e7,#e8d7ff);
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ffd6e7,#e8d7ff);
 }
 
 .box{
- background:white;
- width:90%;
- max-width:420px;
- padding:30px;
- border-radius:25px;
- text-align:center;
- box-shadow:0 10px 30px #0002;
+background:white;
+width:90%;
+max-width:420px;
+padding:30px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 10px 30px #0002;
 }
 
 h1,h2{
- color:#b83280;
+color:#b83280;
 }
 
 p{
- font-size:22px;
- color:#444;
+font-size:22px;
+color:#444;
 }
 
 button{
- width:90%;
- padding:15px;
- margin:10px;
- border:0;
- border-radius:20px;
- background:#b83280;
- color:white;
- font-size:18px;
- cursor:pointer;
- transition:.3s;
+width:90%;
+padding:15px;
+margin:10px;
+border:0;
+border-radius:20px;
+background:#b83280;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
 }
 
 button:hover{
- transform:scale(1.05);
+transform:scale(1.05);
 }
 
 .screen{
- display:none;
+display:none;
 }
 
 .active{
- display:block;
+display:block;
 }
 
 .run{
- position:relative;
+position:relative;
 }
+
 #wheel{
- width:220px;
- height:220px;
- border-radius:50%;
- margin:20px auto;
- display:flex;
- align-items:center;
- justify-content:center;
- background:conic-gradient(
- #ffffff,
- #ffd6e7,
- #e8d7ff,
- #ffffff
- );
- border:8px solid #b83280;
- font-size:25px;
- font-weight:bold;
- transition:4s;
+width:220px;
+height:220px;
+border-radius:50%;
+margin:20px auto;
+display:flex;
+align-items:center;
+justify-content:center;
+background:conic-gradient(
+#ffffff,
+#ffd6e7,
+#e8d7ff,
+#ffffff
+);
+border:8px solid #b83280;
+font-size:25px;
+font-weight:bold;
+transition:4s;
 }
+
 </style>
 
 </head>
@@ -96,6 +100,7 @@ button:hover{
 
 <!-- الشاشة 1 -->
 <div id="s1" class="screen active">
+
 <h1>شهوددددةةة</h1>
 
 <button onclick="next(2)">
@@ -105,12 +110,14 @@ button:hover{
 <button onclick="next(2)">
 Hej bästa kusin i världen
 </button>
+
 </div>
 
 
-<!-- الشاشة 2 -->
+<!-- السؤال الأول -->
 <div id="s2" class="screen">
-<h2>السؤال الثاني</h2>
+
+<h2>السؤال الأول</h2>
 
 <p>مين أحسن ابن عم بالعالم؟</p>
 
@@ -121,12 +128,12 @@ Hej bästa kusin i världen
 <button id="mustafa" class="run" onmouseover="move('mustafa')">
 مصطفى
 </button>
+
 </div>
-
-
-<!-- الشاشة 3 -->
+<!-- السؤال الثاني -->
 <div id="s3" class="screen">
-<h2>السؤال الثالث</h2>
+
+<h2>السؤال الثاني</h2>
 
 <p>مين أفضل نادي بالعالم؟</p>
 
@@ -137,12 +144,14 @@ Hej bästa kusin i världen
 <button id="barca" class="run" onmouseover="move('barca')">
 برشلونة
 </button>
+
 </div>
 
-<!-- الشاشة 4 -->
+
+<!-- السؤال الثالث -->
 <div id="s4" class="screen">
 
-<h2>عجلة الحظ</h2>
+<h2>السؤال الثالث</h2>
 
 <p>أنتِ وحظك مين الأفضل؟</p>
 
@@ -156,12 +165,17 @@ Hej bästa kusin i världen
 
 <p id="result"></p>
 
+<button onclick="next(5)">
+التالي
+</button>
+
 </div>
 
-<!-- الشاشة 5 -->
+
+<!-- السؤال الرابع -->
 <div id="s5" class="screen">
 
-<h2>السؤال الخامس</h2>
+<h2>السؤال الرابع</h2>
 
 <p>مين عمك؟</p>
 
@@ -176,10 +190,10 @@ Hej bästa kusin i världen
 </div>
 
 
-<!-- الشاشة 6 -->
+<!-- السؤال الخامس -->
 <div id="s6" class="screen">
 
-<h2>السؤال الأخير</h2>
+<h2>السؤال الخامس</h2>
 
 <p>مين 🐐؟</p>
 
@@ -192,10 +206,9 @@ Hej bästa kusin i världen
 </button>
 
 </div>
-
-
-<!-- الشاشة الأخيرة -->
+<!-- النهاية -->
 <div id="s7" class="screen">
+
 <h1>شهوددددةةة</h1>
 
 <p>
@@ -221,12 +234,15 @@ Hej bästa kusin i världen
 function next(num){
 
 document.querySelectorAll(".screen").forEach(function(screen){
+
 screen.classList.remove("active");
+
 });
 
 document.getElementById("s"+num).classList.add("active");
 
 }
+
 
 function move(id){
 
@@ -235,6 +251,7 @@ let btn=document.getElementById(id);
 btn.style.position="relative";
 
 btn.style.left=(Math.random()*250-125)+"px";
+
 btn.style.top=(Math.random()*120-60)+"px";
 
 }
@@ -248,22 +265,10 @@ wheel.style.transform="rotate(1440deg)";
 
 setTimeout(function(){
 
-document.getElementById("result").innerHTML =
+document.getElementById("result").innerHTML=
 "النتيجة: ريال مدريد 🤍🏆";
 
 },4000);
-
-}
-
-</script>
-function move(id){
-
-let btn=document.getElementById(id);
-
-btn.style.position="relative";
-
-btn.style.left=(Math.random()*250-125)+"px";
-btn.style.top=(Math.random()*120-60)+"px";
 
 }
 
