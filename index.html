@@ -67,6 +67,25 @@ button:hover{
 .run{
  position:relative;
 }
+#wheel{
+ width:220px;
+ height:220px;
+ border-radius:50%;
+ margin:20px auto;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:conic-gradient(
+ #ffffff,
+ #ffd6e7,
+ #e8d7ff,
+ #ffffff
+ );
+ border:8px solid #b83280;
+ font-size:25px;
+ font-weight:bold;
+ transition:4s;
+}
 </style>
 
 </head>
@@ -120,26 +139,25 @@ Hej bästa kusin i världen
 </button>
 </div>
 
-
 <!-- الشاشة 4 -->
 <div id="s4" class="screen">
+
 <h2>عجلة الحظ</h2>
 
 <p>أنتِ وحظك مين الأفضل؟</p>
 
-<div style="font-size:25px;line-height:2">
-⚪ ريال مدريد<br>
-🔵🔴 فيسكا بارسا<br>
-🏆 رونالدو<br>
-⚽ ميسي<br>
-🤍 ريال مدريد
+<div id="wheel">
+ريال مدريد
 </div>
 
-<button onclick="next(5)">
+<button onclick="spinWheel()">
 لف العجلة
 </button>
 
+<p id="result"></p>
+
 </div>
+
 <!-- الشاشة 5 -->
 <div id="s5" class="screen">
 
@@ -210,7 +228,34 @@ document.getElementById("s"+num).classList.add("active");
 
 }
 
+function move(id){
 
+let btn=document.getElementById(id);
+
+btn.style.position="relative";
+
+btn.style.left=(Math.random()*250-125)+"px";
+btn.style.top=(Math.random()*120-60)+"px";
+
+}
+
+
+function spinWheel(){
+
+let wheel=document.getElementById("wheel");
+
+wheel.style.transform="rotate(1440deg)";
+
+setTimeout(function(){
+
+document.getElementById("result").innerHTML =
+"النتيجة: ريال مدريد 🤍🏆";
+
+},4000);
+
+}
+
+</script>
 function move(id){
 
 let btn=document.getElementById(id);
